@@ -1,14 +1,17 @@
+const container = document.querySelector('.book-container')
+const emptyEl = document.querySelector('.empty')
+const errormsgEl = document.querySelector('.errormsg')
+
 // get the button and add a click event to get book data
 document.querySelector('button').addEventListener('click', getFetch)
-
-
-
+errormsgEl.textContent = ""
 // get localStorage on pageload
 let storedBooks = localStorage.getItem('books')
+let booksArray = []
 
 if (storedBooks) {
   try {
-    let booksArray = JSON.parse(storedBooks)
+    booksArray = JSON.parse(storedBooks)
     renderBooks(booksArray)
   } catch (err) {
     console.log('Corrupted book data, clearing it:', err)
@@ -16,20 +19,22 @@ if (storedBooks) {
   }
 }
 
+
 //define getFetch function
 
 function getFetch() {
   //getting isbn from user
   const isbn = document.querySelector('input').value.trim()
 
-  //edge case - empty isbn 
+  //edge case - empty isbn
   if (!isbn) {
-    alert("Enter a valid isbn")
+    errormsgEl.textContent = "Enter a valid isbn"
     return
   }
   //edge case - repeated button clicks
   const getButton = document.querySelector('button')
   getButton.disabled = true
+  errormsgEl.textContent = "Searching..."
   const url = `https://openlibrary.org/isbn/${isbn}.json`
 
   fetch(url)
@@ -42,45 +47,60 @@ function getFetch() {
 
     .then(data => {
       //use local storage to store objects
-      let booksArray = []
+      errormsgEl.textContent = ""
       let currentStorage = localStorage.getItem('books')
 
       if (currentStorage) {
         booksArray = JSON.parse(currentStorage)
       }
 
-      booksArray.push({ title: data.title, isbn: isbn })
-      localStorage.setItem('books', JSON.stringify(booksArray))
-      renderBooks(booksArray)
+      if (booksArray.some(book => book.isbn === isbn)) {
+        errormsgEl.textContent = "Books already listed"
+      }
+      else {
+        booksArray.push({ title: data.title, isbn: isbn })
+        localStorage.setItem('books', JSON.stringify(booksArray))
+        renderBooks(booksArray)
 
+      }
     })
 
     .catch(err => {
-      console.log(`Error${err}`)
+      errormsgEl.textContent = "Book not found"
     })
-    .finally(() => { getButton.disabled = false })
+    .finally(() => {
+      getButton.disabled = false
+    })
 }
 
 //rendering books
 function renderBooks(booksArray) {
-  const container = document.querySelector('.book-container')
   // clear existing html element
   container.innerHTML = ""
 
-  booksArray.forEach(book => {
-    const card = document.createElement('div')
-    card.classList.add('bookCard')
+  if (booksArray.length === 0) {
+    emptyEl.style.display = 'block'
+  } else {
+    emptyEl.style.display = 'none'
 
-    const titleEl = document.createElement('h2')
-    titleEl.classList.add('title')
-    titleEl.textContent = book.title
+    booksArray.forEach(book => {
+      const card = document.createElement('div')
+      card.classList.add('bookCard')
 
-    const isbnEl = document.createElement("p")
-    isbnEl.classList.add('isbn')
-    isbnEl.textContent = book.isbn
+      const titleEl = document.createElement('h2')
+      titleEl.classList.add('title')
+      titleEl.textContent = book.title
 
-    card.appendChild(titleEl)
-    card.appendChild(isbnEl)
-    container.appendChild(card)
-  });
+      const isbnEl = document.createElement("p")
+      isbnEl.classList.add('isbn')
+      isbnEl.textContent = book.isbn
+
+      card.appendChild(titleEl)
+      card.appendChild(isbnEl)
+      container.appendChild(card)
+    });
+
+  }
 }
+//code to handle states
+
