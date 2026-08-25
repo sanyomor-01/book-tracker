@@ -10,7 +10,7 @@
   --surface-c-low: hsl(0, 0%, 96%);
   --surface-container: hsl(0, 0%, 94%);
   --surface-container-high: hsl(0, 0%, 92%);
-  --surface-container-highest: hsl(0, 0%, 90%);
+  --outline: hsl(0, 0%, 85%);
   --on-surface-container: hsl(0, 0%, 10%);
 
   --text: hsl(0, 0%, 30%);
@@ -69,16 +69,17 @@ html {
   align-items: center;
   width: calc(var(--spacing-xs) * 11);
   height: calc(var(--spacing-xs) * 11);
-  border: 1px solid var(--surface-container-highest);
+  border: 1px solid var(--outline);
   border-radius: var(--spacing-l);
   text-align: center;
-  background-color: var(--surface-container-highest);
+  background-color: var(--surface-container-high);
 }
 
 body {
   padding: 1rem;
 }
-h1 {
+h1,
+h2 {
   color: var(--on-surface-container);
   font-weight: var(--fw-500);
   line-height: 1.375;
@@ -102,6 +103,73 @@ p {
 .mb-6 {
   margin-bottom: calc(var(--spacing-xs) * 6);
 }
+
+.mt-6 {
+  margin-top: calc(var(--spacing-xs) * 6);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+input::placeholder {
+  font-size: 14px;
+  color: var(--text-50);
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.w-60 {
+  width: 60%;
+}
+input {
+  padding: 6px 12px;
+  outline: none;
+  background-color: var(--surface-container);
+  border: 2px solid var(--outline);
+  border-radius: var(--spacing-xs);
+  color: var(--text);
+}
+
+button {
+  border: 0;
+  outline: none;
+  padding: 6px 12px;
+  border-radius: var(--spacing-xs);
+  background-color: none;
+  border: 2px solid var(--outline);
+  color: var(--text);
+}
+
+.search-field {
+  padding: 1px;
+  border: 2px solid var(--outline);
+  border-radius: var(--spacing-xs);
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  border: 1px solid var(--outline);
+  border-radius: var(--spacing-xs);
+}
+
+.empty > p {
+  text-align: center;
+  border: 1px solid var(--outline);
+  padding: 24px;
+  font-size: inherit;
+  background-color: var(--surface);
+}
+
 /******************************************
 /* Media Queries*/
 @media (min-width: 40rem) {

@@ -25,36 +25,36 @@
           </div>
         </header>
         <section class="mb-6">
-          <p class="mb-4">
-            People who are reading multiple books need a simple way to keep
-            track of the books they have added to their personal reading list
-            without manually typing and maintaining book information.
-          </p>
           <p>
-            This product let users enter a book's ISBN, automatically retrieve
-            its information, and save it to a personal book list on their
-            localStorage.
+            Simply keep track of the books you've added to your personal reading
+            list without manually typing and maintaining book information.
           </p>
         </section>
 
         <section class="adding_books mb-6">
-          <form action="" class="isbn-input">
-            <label for="isbn_number">Input the ISBN</label>
+          <form action="#" class="isbn-input">
             <div class="field">
-              <input id="isbn_number" type="text" name="isbn" value="" />
+              <input
+                class="w-60"
+                id="isbn_number"
+                type="text"
+                name="isbn"
+                value=""
+                placeholder="Input an isbn"
+              />
               <button type="button" name="button">Add book</button>
             </div>
             <p class="errormsg">Book not found</p>
           </form>
         </section>
-        <section class="booklisting">
-          <h1>Books</h1>
-          <form action="#">
-            <input type="text" class="search-input" placeholder="search book" />
+        <section class="booklisting mb-6">
+          <h2 class="mb-4">Books</h2>
+          <form class="search-field mb-4" action="#">
+            <input type="text" class="search-input" placeholder="Search book" />
           </form>
           <div class="empty">
             <p class="emptymsg">
-              You haven't added any books yet. Enter an ISBN to get started.
+              You haven't added any books yet. Enter an isbn to get started.
             </p>
           </div>
           <div class="book-container">
