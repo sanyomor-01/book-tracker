@@ -6,7 +6,9 @@ const searchInput = document.querySelector('.search-input')
 
 // get the button and add a click event to get book data
 document.querySelector('button').addEventListener('click', getFetch)
+
 errormsgEl.textContent = ""
+
 // get localStorage on pageload
 let storedBooks = localStorage.getItem('books')
 let booksArray = []

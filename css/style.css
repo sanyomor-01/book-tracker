@@ -1,24 +1,115 @@
-/******************************************
-/* CSS
-/*******************************************/
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --mobile: 375px;
+  --desktop: 1440px;
+
+  /* Color*/
+  --surface-c-lowest: hsl(0, 100%, 100%);
+  --surface: hsl(0, 0%, 98%);
+  --surface-c-low: hsl(0, 0%, 96%);
+  --surface-container: hsl(0, 0%, 94%);
+  --surface-container-high: hsl(0, 0%, 92%);
+  --surface-container-highest: hsl(0, 0%, 90%);
+  --on-surface-container: hsl(0, 0%, 10%);
+
+  --text: hsl(0, 0%, 30%);
+  --text-inactive: hsl(0, 0%, 60%);
+  --text-50: hsl(0, 0%, 50%);
+
+  /* Sizes*/
+  --spacing-none: 0px;
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 32px;
+  --spacing-xl: 64;
+
+  --def-font-size: 16px;
+  --fw-500: 500;
+  --fw-600: 600;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--surface-c-low);
+}
+
+html {
+  font-family: "Inter", sans-serif;
+  font-size: var(--def-font-size);
+  color: var(--text-50);
+}
 
 /* Box Model Hack */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-img {
-  display: block;
-  margin: 0 auto;
-  width: 34rem;
+.header {
+  display: flex;
+  margin-bottom: calc(var(--spacing-xs) * 6);
+  gap: calc(var(--spacing-xs) * 3);
+  justify-content: flex-start;
+  align-items: flex-start;
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--spacing-xs) * 11);
+  height: calc(var(--spacing-xs) * 11);
+  border: 1px solid var(--surface-container-highest);
+  border-radius: var(--spacing-l);
+  text-align: center;
+  background-color: var(--surface-container-highest);
+}
+
 body {
   padding: 1rem;
 }
+h1 {
+  color: var(--on-surface-container);
+  font-weight: var(--fw-500);
+  line-height: 1.375;
+  font-size: inherit;
+}
 
+.desc {
+  font-weight: 450;
+  color: var(--text-50);
+  line-height: 1.375;
+  white-space: nowrap;
+}
+p {
+  color: var(--text-50);
+  font-weight: 450;
+}
+
+.mb-4 {
+  margin-bottom: calc(var(--spacing-xs) * 4);
+}
+.mb-6 {
+  margin-bottom: calc(var(--spacing-xs) * 6);
+}
 /******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+/* Media Queries*/
+@media (min-width: 40rem) {
+  .wrapper {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    padding-block: calc(var(--spacing-xs) * 24);
+    padding-inline: calc(var(--spacing-xs) * 6);
+    max-width: calc(var(--spacing-xs) * 173);
+  }
+}

@@ -11,43 +11,61 @@
     <title>HeavenBaby</title>
 
     <!-- external CSS link -->
-    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main>
-      <header>
-        <div class="container">
+    <div class="wrapper">
+      <main>
+        <header class="header">
           <div class="logo"></div>
-          <p class="app-name">My Book Tracker</p>
-          <p class="description">Keep track of the books you find</p>
-        </div>
-      </header>
-      <section class="adding_books">
-        <label for="isbn_number">Input the ISBN</label>
-        <input id="isbn_number" type="text" name="isbn" value="" />
-        <button type="button" name="button">Add book</button>
-        <p class="errormsg">Book not found</p>
-      </section>
-
-      <section class="booklisting">
-        <h1>Books</h1>
-        <form action="#">
-          <input type="text" class="search-input" placeholder="search book" />
-        </form>
-        <div class="empty">
-          <p class="emptymsg">
-            You haven't added any books yet. Enter an ISBN to get started.
-          </p>
-        </div>
-        <div class="book-container">
-          <div class="bookCard">
-            <h2 class="title"></h2>
-            <p class="isbn"></p>
+          <div class="text-content">
+            <h1 class="app-name">My Book Tracker</h1>
+            <span class="desc">Keep track of the books you find</span>
           </div>
-        </div>
-      </section>
-    </main>
+        </header>
+        <section class="mb-6">
+          <p class="mb-4">
+            People who are reading multiple books need a simple way to keep
+            track of the books they have added to their personal reading list
+            without manually typing and maintaining book information.
+          </p>
+          <p>
+            This product let users enter a book's ISBN, automatically retrieve
+            its information, and save it to a personal book list on their
+            localStorage.
+          </p>
+        </section>
+
+        <section class="adding_books mb-6">
+          <form action="" class="isbn-input">
+            <label for="isbn_number">Input the ISBN</label>
+            <div class="field">
+              <input id="isbn_number" type="text" name="isbn" value="" />
+              <button type="button" name="button">Add book</button>
+            </div>
+            <p class="errormsg">Book not found</p>
+          </form>
+        </section>
+        <section class="booklisting">
+          <h1>Books</h1>
+          <form action="#">
+            <input type="text" class="search-input" placeholder="search book" />
+          </form>
+          <div class="empty">
+            <p class="emptymsg">
+              You haven't added any books yet. Enter an ISBN to get started.
+            </p>
+          </div>
+          <div class="book-container">
+            <div class="bookCard">
+              <h2 class="title"></h2>
+              <p class="isbn"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
 
     <script type="text/javascript" src="js/main.js"></script>
   </body>
