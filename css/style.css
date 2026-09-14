@@ -197,6 +197,7 @@ button {
   border: 1px solid var(--outline);
   padding: 24px;
   font-size: inherit;
+  width: 100%;
   background-color: var(--surface);
 }
 
