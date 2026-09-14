@@ -17,6 +17,9 @@
   --text-inactive: hsl(0, 0%, 60%);
   --text-50: hsl(0, 0%, 50%);
 
+  --errClr: hsl(0, 100%, 70%);
+  --errBgClr: hsl(0, 100%, 96%);
+
   /* Sizes*/
   --spacing-none: 0px;
   --spacing-xxs: 2px;
@@ -24,9 +27,10 @@
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 32px;
-  --spacing-xl: 64;
+  --spacing-xl: 64px;
 
   --def-font-size: 16px;
+  --def-font-14px: 14px;
   --fw-500: 500;
   --fw-600: 600;
 }
@@ -72,7 +76,7 @@ html {
   border: 1px solid var(--outline);
   border-radius: var(--spacing-l);
   text-align: center;
-  background-color: var(--surface-container-high);
+  background-color: hwb(189 0% 30%);
 }
 
 body {
@@ -135,6 +139,13 @@ input {
   border: 2px solid var(--outline);
   border-radius: var(--spacing-xs);
   color: var(--text);
+
+  transition: border 0.3s ease-out;
+}
+
+.field > input:hover,
+input:focus {
+  border: 2px solid #00a9c7b6;
 }
 
 button {
@@ -142,15 +153,34 @@ button {
   outline: none;
   padding: 6px 12px;
   border-radius: var(--spacing-xs);
-  background-color: none;
   border: 2px solid var(--outline);
   color: var(--text);
+  cursor: pointer;
+}
+
+.addBookBtn {
+  border: none;
+  background: #00a9c7b6;
+  color: var(--text);
+
+  transition:
+    background 0.3s ease-out,
+    color 0.3s ease-out;
+}
+
+.addBookBtn:hover {
+  background-color: hsl(189, 100%, 35%);
+  color: hsl(189, 96%, 98%);
 }
 
 .search-field {
   padding: 1px;
-  border: 2px solid var(--outline);
+  background: var(--outline);
   border-radius: var(--spacing-xs);
+}
+.search-input:focus,
+.search-input:hover {
+  border: 2px solid #00a9c7b6;
 }
 
 .empty {
@@ -170,6 +200,49 @@ button {
   background-color: var(--surface);
 }
 
+.bookCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-s) * 2);
+  background: transparent;
+  border-radius: var(--spacing-xs);
+  padding: 10px 16px;
+
+  transition:
+    background 0.3s ease-out,
+    padding 0.3s ease-out;
+}
+
+.bookCard:hover {
+  background: var(--surface-container-high);
+}
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xxs);
+}
+
+.bookInfo > .isbn {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.removeBtn {
+  border: none;
+  background-color: var(--errBgClr);
+  color: var(--errClr);
+  border-radius: var(--spacing-xl);
+  padding: 6px 16px;
+  cursor: pointer;
+  transition:
+    color 0.3s ease-out,
+    background-color 0.3s ease-out;
+}
+.removeBtn:hover {
+  color: var(--errBgClr);
+  background-color: var(--errClr);
+}
 /******************************************
 /* Media Queries*/
 @media (min-width: 40rem) {

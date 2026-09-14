@@ -98,10 +98,8 @@ function renderBooks(booksToRender) {
       const card = document.createElement('div')
       card.classList.add('bookCard')
 
-      const removeBtn = document.createElement('button')
-      removeBtn.dataset.isbn = book.isbn
-      removeBtn.classList.add('removeBtn')
-      removeBtn.textContent = 'Remove'
+      const content = document.createElement('div')
+      content.classList.add('bookInfo')
 
       const titleEl = document.createElement('h2')
       titleEl.classList.add('title')
@@ -110,6 +108,11 @@ function renderBooks(booksToRender) {
       const isbnEl = document.createElement("p")
       isbnEl.classList.add('isbn')
       isbnEl.textContent = book.isbn
+
+      const removeBtn = document.createElement('button')
+      removeBtn.dataset.isbn = book.isbn
+      removeBtn.classList.add('removeBtn')
+      removeBtn.textContent = 'Delete'
 
       //removing a book card
       removeBtn.addEventListener('click', removeBookCard)
@@ -123,8 +126,9 @@ function renderBooks(booksToRender) {
       }
 
       //appending child elements 
-      card.appendChild(titleEl)
-      card.appendChild(isbnEl)
+      card.appendChild(content)
+      content.appendChild(titleEl)
+      content.appendChild(isbnEl)
       card.appendChild(removeBtn)
       container.appendChild(card)
     });
