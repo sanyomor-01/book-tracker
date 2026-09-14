@@ -17,8 +17,8 @@
   --text-inactive: hsl(0, 0%, 60%);
   --text-50: hsl(0, 0%, 50%);
 
-  --errClr: hsl(0, 100%, 70%);
-  --errBgClr: hsl(0, 100%, 96%);
+  --errClr: hsl(0, 100%, 60%);
+  --errBgClr: hsl(0, 100%, 94%);
 
   /* Sizes*/
   --spacing-none: 0px;
@@ -173,11 +173,6 @@ button {
   color: hsl(189, 96%, 98%);
 }
 
-.search-field {
-  padding: 1px;
-  background: var(--outline);
-  border-radius: var(--spacing-xs);
-}
 .search-input:focus,
 .search-input:hover {
   border: 2px solid #00a9c7b6;
@@ -215,9 +210,16 @@ button {
     padding 0.3s ease-out;
 }
 
-.bookCard:hover {
+@media (hover: hover) {
+  .bookCard:hover {
+    background: var(--surface-container-high);
+  }
+}
+
+.bookCard:active {
   background: var(--surface-container-high);
 }
+
 .bookInfo {
   display: flex;
   flex-direction: column;
@@ -238,11 +240,15 @@ button {
   cursor: pointer;
   transition:
     color 0.3s ease-out,
-    background-color 0.3s ease-out;
+    background-color 0.3s ease-out,
+    transform 0.15s ease-out;
 }
-.removeBtn:hover {
-  color: var(--errBgClr);
-  background-color: var(--errClr);
+
+@media (hover: hover) {
+  .removeBtn:hover {
+    color: var(--errBgClr);
+    background-color: var(--errClr);
+  }
 }
 /******************************************
 /* Media Queries*/
@@ -294,5 +300,12 @@ button {
 
   .bookCard {
     padding: var(--spacing-s) var(--spacing-m);
+  }
+  .bookInfo > .isbn {
+    font-size: 12px;
+  }
+
+  .bookInfo > .title {
+    font-size: 14px;
   }
 }
