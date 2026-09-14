@@ -70,7 +70,8 @@ function getFetch() {
       else {
         booksArray.push({ title: data.title, isbn: isbn })
         localStorage.setItem('books', JSON.stringify(booksArray))
-        renderBooks(booksArray)
+        const reversedBooks = [...booksArray].reverse()
+        renderBooks(reversedBooks)
 
       }
     })

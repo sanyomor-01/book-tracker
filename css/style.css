@@ -206,7 +206,7 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: calc(var(--spacing-s) * 2);
-  background: transparent;
+  background: var(--surface-c-lowest);
   border-radius: var(--spacing-xs);
   padding: 10px 16px;
 
@@ -253,5 +253,46 @@ button {
     padding-block: calc(var(--spacing-xs) * 24);
     padding-inline: calc(var(--spacing-xs) * 6);
     max-width: calc(var(--spacing-xs) * 173);
+  }
+}
+
+/* Mobile screens (below the 40rem breakpoint above) */
+@media (max-width: 39.9375rem) {
+  .wrapper {
+    padding: var(--spacing-none);
+    max-width: 100%;
+  }
+  body {
+    padding: var(--spacing-m);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-l);
+  }
+
+  .desc {
+    white-space: normal;
+  }
+
+  .field {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-s);
+  }
+
+  .field > .w-60,
+  .w-60 {
+    width: 100%;
+  }
+
+  .field > button {
+    width: 100%;
+  }
+
+  .bookCard {
+    padding: var(--spacing-s) var(--spacing-m);
   }
 }
